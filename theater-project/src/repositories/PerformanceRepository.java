@@ -2,18 +2,18 @@ package repositories;
 
 import domain.Performance;
 import domain.PerformanceType;
+import util.Util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 
+
 public class PerformanceRepository extends Repository<Performance> {
-
-
-
     // pogledaj kako se pise i cita iz file
     // pogledaj kako treba da izgleda path
 
@@ -22,9 +22,6 @@ public class PerformanceRepository extends Repository<Performance> {
     public PerformanceRepository(String path) {
         this.path = path;
     }
-
-
-
 
     @Override
     public void parser() {
@@ -42,12 +39,14 @@ public class PerformanceRepository extends Repository<Performance> {
                 String stringPerformanceRepresentation = scanner.nextLine();
                 String[] parts = stringPerformanceRepresentation.split(this.filedDelimiter);
 
-                int id;
+                int id = Util.parseInt(parts[0]);
+                System.out.println("id " + id);
+
                 String title = parts[1];
                 System.out.println("Pedstava " + title);
+
                 PerformanceType type = PerformanceType.fromStringToPerformanceType(parts[2]) ;
                 System.out.println("TIP " + type);
-//Trebace mi da nadjem kako da kastujem string u intidzer
 
                 String director = parts[3];
                 System.out.println( "Reziser "+director);
@@ -55,27 +54,22 @@ public class PerformanceRepository extends Repository<Performance> {
                 //ArrayList<String> actors = parts[4];// ovde nam izbacuje gresku za string
                 //System.out.println(actors);
 
-                int duration = Integer.parseInt(parts[5]);
-                System.out.println(duration);
+                int duration = Util.parseInt(parts[5]);
+                System.out.println( "duration " + duration);
 
                 String production = parts[6];
-                System.out.println(production);
+                System.out.println( "production "+production);
 
-                int yearOfProduction = Integer.parseInt(parts[7]);
-                System.out.println(yearOfProduction);
+                int yearOfProduction = Util.parseInt(parts[7]);
+                System.out.println( "yearOfProduction "+yearOfProduction);
 
                 String description = parts[8];
                 System.out.println(description);
-
-
-
             }
             scanner.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + read);
         }
-
-
 
     }
 

@@ -5,13 +5,13 @@ public enum PerformanceType {
     OPERA,
     BALLET;
     public static PerformanceType fromStringToPerformanceType(String stringRepresentation) {
-        if (stringRepresentation == "DRAMA") {
+        if (stringRepresentation.equals("DRAMA")) {
             return PerformanceType.DRAMA;
         }
-        if (stringRepresentation == "OPERA") {
+        if (stringRepresentation.equals("OPERA")) {
             return PerformanceType.OPERA;
         }
-        if (stringRepresentation == "BALLET") {
+        if (stringRepresentation.equals("BALLET")) {
             return PerformanceType.BALLET;
         }
         return null;
