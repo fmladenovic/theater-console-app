@@ -51,8 +51,22 @@ public class PerformanceRepository extends Repository<Performance> {
                 String director = parts[3];
                 System.out.println( "Reziser "+director);
 
-                //ArrayList<String> actors = parts[4];// ovde nam izbacuje gresku za string
-                //System.out.println(actors);
+                String[] actres = Util.glumiceUtil(parts[4]);
+
+//                String[] actors = parts[4].split(",");
+//                //System.out.println(actors[0]);
+//
+//                int i = 0;
+//                while (i < actors.length ){
+//                    try {
+//                        System.out.println(actors[i]);
+//                        i++;
+//                    }catch (Exception e){
+//                        System.out.println(e.getMessage());
+//
+//                    }
+//
+//                }
 
                 int duration = Util.parseInt(parts[5]);
                 System.out.println( "duration " + duration);
