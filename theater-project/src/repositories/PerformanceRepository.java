@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -51,23 +52,9 @@ public class PerformanceRepository extends Repository<Performance> {
                 String director = parts[3];
                 System.out.println( "Reziser "+director);
 
-                String[] actres = Util.glumiceUtil(parts[4]);
-
-//                String[] actors = parts[4].split(",");
-//                //System.out.println(actors[0]);
-//
-//                int i = 0;
-//                while (i < actors.length ){
-//                    try {
-//                        System.out.println(actors[i]);
-//                        i++;
-//                    }catch (Exception e){
-//                        System.out.println(e.getMessage());
-//
-//                    }
-//
-//                }
-
+                ArrayList<String> actres = Util.parseActors(parts[4]);
+                System.out.println("Actres: " + actres);
+                
                 int duration = Util.parseInt(parts[5]);
                 System.out.println( "duration " + duration);
 
@@ -79,6 +66,22 @@ public class PerformanceRepository extends Repository<Performance> {
 
                 String description = parts[8];
                 System.out.println(description);
+
+                boolean isDelated = Util.parseBolean(parts[9]);
+                System.out.println(isDelated);
+                
+                Performance performance = new Performance(
+                        id,
+                        title,
+                        type,
+                        director,
+                        actres,
+                        duration,
+                        production,
+                        yearOfProduction,
+                        description,
+                        isDelated
+                );
             }
             scanner.close();
         } catch (FileNotFoundException e) {
@@ -86,6 +89,7 @@ public class PerformanceRepository extends Repository<Performance> {
         }
 
     }
+
 
 
     @Override
