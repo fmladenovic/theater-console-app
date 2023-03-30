@@ -6,6 +6,8 @@ import util.Util;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,7 +71,7 @@ public class PerformanceRepository extends Repository<Performance> {
 
                 boolean isDelated = Util.parseBolean(parts[9]);
                 System.out.println(isDelated);
-                
+                //Ovo ce biti onjasnjenje za stash
                 Performance performance = new Performance(
                         id,
                         title,
@@ -94,6 +96,42 @@ public class PerformanceRepository extends Repository<Performance> {
 
     @Override
     public void serializer() {
+        File write = new File(this.path);
+        Performance performance1 = new Performance(
+                1,
+                "Dzonijeva predtsva",
+                PerformanceType.DRAMA,
+                "DzoniDebilcina",
+                new ArrayList<String>(Arrays.asList("Kurva1", "Kurva2", "Kurva3")),
+                360,
+                "KototamopevaProdaksn",
+                2023,
+                "SeksNaSuvo",
+                false
+        );
+            try {
+                FileWriter writer = new FileWriter(write);
+                writer.write(
+                        performance1.getId()+"|"+
+                                performance1.getTitle()+"|"+
+                                performance1.getType()+ "|"+
+                                performance1.getDirector()+ "|"+
+                                performance1.getActors()+ "|"+
+                                performance1.getDuration()+ "|"+
+                                performance1.getProduction()+ "|"+
+                                performance1.getYearOfProduction()+ "|"+
+                                performance1.getDescription()+ "|"+
+                                performance1.isDeleted()
+                );
+
+                writer.close();
+                System.out.println("File created and written to successfully!");
+            } catch (IOException e) {
+                System.out.println("An error occurred: " + e.getMessage());
+            }
+        }
+
+
         // Od objekta pravi string sa odredjenim formatom
 
         // za svaki value u this.data kreiraj neki format koji ce da bude string
@@ -101,12 +139,10 @@ public class PerformanceRepository extends Repository<Performance> {
         // primer formata:
         // 1|Na lepom plavom Dunavu|BALLET|Nikola Pavlovic|Neka kurva1,Neka kurva2,Neka kurva3|120|SD Production|2023|Bolje da ne znate|false
 
-        File write = new File("C:\\Users\\ASUS\\Desktop\\teatar1\\theater-console-app\\theater-project\\src\\readWrite\\write.txt");
-
 
 
     }
 
 
 
-}
+

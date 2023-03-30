@@ -19,6 +19,7 @@ public class Util {
          ArrayList<String> stringList = new ArrayList<String>(Arrays.asList(actors));
          return stringList;
      }
+     //funkcija koja mi pretvara arraylist u string sa delimiterom(,)
 
      public static boolean parseBolean(String boleanStr){
          if (boleanStr.equals("false")){

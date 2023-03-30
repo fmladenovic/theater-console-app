@@ -30,7 +30,11 @@ public class Main {
                         )
         );
        // repository.setData(data);
+
         repository.parser();
+        PerformanceRepository repository2 = new PerformanceRepository("resources/write.txt");
+
+        repository2.serializer();
         // rezultat:
         // U dokumentu na prosledjenom pathu treba da bude serializovan ovaj objekat u ovom formatu
         // 1|Na lepom plavom Dunavu|BALLET|Nikola Pavlovic|Neka kurva1,Neka kurva2,Neka kurva3|120|SD Production|2023|Bolje da ne znate|false
