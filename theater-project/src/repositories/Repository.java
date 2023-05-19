@@ -7,6 +7,9 @@ import java.util.Map;
 
 public abstract class Repository<TEntity> implements IRepository<TEntity>{
     protected String path;
+
+
+    protected String filedDelimiter = "\\|";
     protected Map<Integer, TEntity> data = new HashMap<Integer, TEntity>();
 
     public Repository() {}
