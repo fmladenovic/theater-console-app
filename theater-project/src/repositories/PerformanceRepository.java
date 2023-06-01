@@ -23,7 +23,7 @@ public class PerformanceRepository extends Repository<Performance> {
 
     public PerformanceRepository() {}
     public PerformanceRepository(String path) {
-        this.path = path;
+        this.path = path; 
     }
 
     @Override
